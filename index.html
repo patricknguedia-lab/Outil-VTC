@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Outil Commercial VTC — Import &amp; Analyse</title>
+<title>VTC Kombicar — Outil Commercial</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -37,6 +37,107 @@
   button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
   input,select,textarea{font-family:inherit;font-size:14px;color:var(--ink)}
   input:focus,select:focus,textarea:focus{outline:2px solid var(--primary);outline-offset:1px}
+
+  /* === LOGIN SCREEN === */
+  .login-screen{
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    padding:24px;background:linear-gradient(135deg,var(--bg) 0%,#ebe7da 100%);
+  }
+  .login-card{
+    background:var(--surface);border-radius:16px;
+    padding:36px 32px;width:100%;max-width:420px;
+    box-shadow:0 8px 32px rgba(22,24,29,0.08),0 1px 0 rgba(255,255,255,0.5) inset;
+  }
+  .login-brand{text-align:center;margin-bottom:28px}
+  .login-brand .logo{margin:0 auto}
+  .login-error{
+    background:var(--danger-soft);color:var(--danger);
+    padding:10px 14px;border-radius:8px;font-size:13px;
+    margin-bottom:14px;border:1px solid #f3c4be;
+  }
+  .login-help{
+    margin-top:22px;padding:14px;background:var(--bg);border-radius:8px;
+    font-size:12px;color:var(--ink-2);line-height:1.6;text-align:center;
+  }
+  .login-help code{
+    background:var(--surface);padding:2px 6px;border-radius:3px;
+    font-family:var(--mono);color:var(--primary);font-weight:600;
+  }
+  .login-help em{color:var(--ink-3);font-size:11px}
+
+  /* === ADMIN SECTIONS === */
+  .admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+  .admin-section{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+  .admin-section h3{font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .admin-section h3 svg{color:var(--primary)}
+
+  .agent-list{display:flex;flex-direction:column;gap:8px}
+  .agent-row{
+    display:flex;align-items:center;gap:10px;padding:10px 12px;
+    background:var(--bg);border:1px solid var(--line);border-radius:8px;
+  }
+  .agent-row .agent-pic{width:32px;height:32px;flex-shrink:0}
+  .agent-row .agent-info{flex:1;min-width:0}
+  .agent-row .agent-info strong{display:block;font-size:13px;font-weight:600}
+  .agent-row .agent-info small{font-size:11px;color:var(--ink-3);font-family:var(--mono)}
+  .agent-row .role-badge{
+    padding:2px 8px;border-radius:999px;font-size:10px;font-weight:700;
+    text-transform:uppercase;letter-spacing:0.06em;
+  }
+  .role-admin{background:var(--primary-soft);color:var(--primary)}
+  .role-commercial{background:var(--accent-soft);color:var(--accent)}
+
+  /* === LEADERBOARD === */
+  .leaderboard{display:flex;flex-direction:column;gap:8px}
+  .leader-row{
+    display:flex;align-items:center;gap:12px;padding:12px 14px;
+    background:var(--bg);border:1px solid var(--line);border-radius:8px;
+  }
+  .leader-rank{
+    width:28px;height:28px;border-radius:8px;display:grid;place-items:center;
+    font-weight:800;font-size:13px;flex-shrink:0;
+    background:var(--surface);border:1px solid var(--line);color:var(--ink-2);
+  }
+  .leader-rank.r1{background:#fff4d6;border-color:#f0d97f;color:#a67504}
+  .leader-rank.r2{background:#eef0f2;border-color:#c8cfd6;color:#5a6068}
+  .leader-rank.r3{background:#fde8d4;border-color:#e8b88a;color:#b86a1a}
+  .leader-info{flex:1;min-width:0}
+  .leader-info strong{display:block;font-size:13px;font-weight:600}
+  .leader-info small{font-size:11px;color:var(--ink-3);font-family:var(--mono)}
+  .leader-stats{
+    display:flex;gap:14px;font-size:12px;color:var(--ink-2);
+    flex-shrink:0;
+  }
+  .leader-stat{text-align:center}
+  .leader-stat .num{font-weight:700;font-size:14px;color:var(--ink);display:block}
+  .leader-stat .lbl{font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-3)}
+
+  .currency-input{display:grid;grid-template-columns:1fr 100px;gap:8px}
+
+  /* === EMAIL CHOOSER MODAL === */
+  .email-options{display:grid;grid-template-columns:1fr;gap:8px;margin-top:8px}
+  .email-opt{
+    display:flex;align-items:center;gap:14px;padding:14px 16px;
+    background:var(--surface);border:1.5px solid var(--line-2);border-radius:10px;
+    text-decoration:none;color:var(--ink);transition:all 0.15s;
+  }
+  .email-opt:hover{border-color:var(--primary);transform:translateX(2px);background:var(--primary-soft)}
+  .email-opt-icon{
+    width:42px;height:42px;border-radius:8px;flex-shrink:0;
+    display:grid;place-items:center;font-size:20px;font-weight:700;color:#fff;
+  }
+  .email-opt-icon.gmail{background:#ea4335}
+  .email-opt-icon.outlook{background:#0078d4}
+  .email-opt-icon.default{background:var(--primary)}
+  .email-opt-content{flex:1;min-width:0}
+  .email-opt-content strong{display:block;font-size:14px;font-weight:600;margin-bottom:2px}
+  .email-opt-content small{font-size:11px;color:var(--ink-3)}
+  .email-opt-arrow{color:var(--ink-3);font-size:18px}
+
+  .role-only{display:none}
+  body.is-admin .role-only{display:block}
+  body.is-admin .role-only-flex{display:flex}
+  body.is-admin .role-only-grid{display:grid}
 
   .topbar{
     display:flex;align-items:center;justify-content:space-between;
@@ -128,6 +229,32 @@
   .format-tag{
     padding:3px 8px;background:var(--bg);border:1px solid var(--line);border-radius:4px;
     font-family:var(--mono);font-weight:600;color:var(--ink-2);
+  }
+
+  /* === BDD CHARGÉE === */
+  .bdd-loaded{
+    margin:24px 28px 0;
+  }
+  .bdd-loaded-inner{
+    background:linear-gradient(135deg,var(--success-soft) 0%,#d4ebde 100%);
+    border:1.5px solid var(--success);
+    border-radius:12px;
+    padding:18px 22px;
+    display:flex;align-items:center;gap:18px;
+    box-shadow:0 4px 14px rgba(45,122,79,0.08);
+  }
+  .bdd-icon{
+    width:44px;height:44px;border-radius:50%;
+    background:var(--success);color:#fff;
+    display:grid;place-items:center;flex-shrink:0;
+  }
+  .bdd-info{flex:1;min-width:0}
+  .bdd-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:3px}
+  .bdd-meta{font-size:12px;color:var(--ink-2);font-family:var(--mono)}
+  .bdd-actions{display:flex;gap:8px;flex-shrink:0}
+  @media (max-width:700px){
+    .bdd-loaded-inner{flex-direction:column;align-items:stretch;text-align:center}
+    .bdd-actions{justify-content:center}
   }
 
   /* === IMPORT GUIDE === */
@@ -411,19 +538,62 @@
 </head>
 <body>
 
+<!-- ============================ -->
+<!-- ÉCRAN DE CONNEXION -->
+<!-- ============================ -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <div class="login-brand">
+      <div class="logo" style="width:48px;height:48px;font-size:20px;border-radius:12px">VK</div>
+      <h1 style="font-size:24px;font-weight:800;letter-spacing:-0.02em;margin-top:14px">VTC Kombicar</h1>
+      <p style="font-size:13px;color:var(--ink-2);margin-top:4px">Outil commercial — Connexion</p>
+    </div>
+    <div id="loginError" class="login-error" style="display:none"></div>
+    <div class="field">
+      <label>Identifiant</label>
+      <input type="text" id="loginUsername" placeholder="Votre identifiant" autocomplete="username"/>
+    </div>
+    <div class="field">
+      <label>Mot de passe</label>
+      <input type="password" id="loginPassword" placeholder="Votre mot de passe" autocomplete="current-password"/>
+    </div>
+    <button class="btn btn-primary btn-lg" id="loginBtn" style="width:100%;justify-content:center">Se connecter</button>
+    <div class="login-help">
+      <strong>Premier accès ?</strong><br>
+      Identifiant <code>admin</code> · Mot de passe <code>admin</code><br>
+      <em>Vous pourrez créer les comptes commerciaux ensuite.</em>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ -->
+<!-- APPLICATION (visible après connexion) -->
+<!-- ============================ -->
+<div id="app" style="display:none">
+
 <header class="topbar">
   <div class="brand">
-    <div class="logo">VR</div>
+    <div class="logo">VK</div>
     <div class="brand-text">
-      <h1>VTC Relations</h1>
+      <h1>VTC Kombicar</h1>
       <small>Outil commercial · Import &amp; Analyse BDD</small>
     </div>
   </div>
   <div class="top-right">
-    <div class="agent">
-      <div class="agent-pic">SM</div>
-      <div class="agent-meta"><strong>Sarah Moreau</strong><small>Commercial · Paris</small></div>
+    <button class="btn btn-ghost btn-sm role-only" id="btnAdminPanel" style="display:none">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Paramètres
+    </button>
+    <div class="agent" id="topAgentBadge">
+      <div class="agent-pic" id="topAgentPic">?</div>
+      <div class="agent-meta">
+        <strong id="topAgentName">—</strong>
+        <small id="topAgentRole">—</small>
+      </div>
     </div>
+    <button class="btn btn-ghost btn-sm" id="logoutBtn" title="Se déconnecter">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+    </button>
   </div>
 </header>
 
@@ -442,6 +612,10 @@
     3. Suivi des actions
     <span class="badge" id="tabFollowupCount">0</span>
   </button>
+  <button class="tab role-only" data-tab="dashboard" style="display:none">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    4. Dashboard équipe
+  </button>
 </nav>
 
 <!-- ============================ -->
@@ -459,6 +633,27 @@
       <div class="step"><span class="step-num">3</span> Analyse auto</div>
       <span class="step-arrow">→</span>
       <div class="step"><span class="step-num">4</span> Lancer les actions</div>
+    </div>
+  </div>
+
+  <!-- BANNIÈRE BDD CHARGÉE (visible uniquement si une BDD existe en mémoire) -->
+  <div class="bdd-loaded" id="bddLoadedBanner" style="display:none">
+    <div class="bdd-loaded-inner">
+      <div class="bdd-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="bdd-info">
+        <div class="bdd-title">Une base de données est déjà chargée</div>
+        <div class="bdd-meta" id="bddMetaText">—</div>
+      </div>
+      <div class="bdd-actions">
+        <button class="btn btn-primary btn-sm" id="bddContinue">
+          Continuer →
+        </button>
+        <button class="btn btn-danger btn-sm" id="bddClear" title="Effacer la BDD pour importer un nouveau fichier">
+          🗑️ Effacer
+        </button>
+      </div>
     </div>
   </div>
 
@@ -746,6 +941,159 @@
 </div>
 
 <!-- ============================ -->
+<!-- VIEW 4 : DASHBOARD ÉQUIPE (admin only) -->
+<!-- ============================ -->
+<div class="container view" id="viewDashboard" style="display:none">
+  <div class="page-head" style="margin-bottom:24px">
+    <h2 style="font-size:24px;font-weight:800;letter-spacing:-0.02em">📊 Dashboard équipe commerciale</h2>
+    <p style="color:var(--ink-2);font-size:14px;margin-top:4px">Vue d'ensemble de l'activité et performance de chaque commercial</p>
+  </div>
+
+  <!-- KPIs équipe -->
+  <div class="followup-stats" style="grid-template-columns:repeat(5,1fr)">
+    <div class="fstat"><div class="num" id="dashTotal">0</div><div class="lbl">Total actions</div></div>
+    <div class="fstat ok"><div class="num" id="dashSuccess">0</div><div class="lbl">Validées (succès)</div></div>
+    <div class="fstat fail"><div class="num" id="dashFail">0</div><div class="lbl">Échec / Sans réponse</div></div>
+    <div class="fstat pend"><div class="num" id="dashPend">0</div><div class="lbl">En attente</div></div>
+    <div class="fstat"><div class="num" id="dashRate">0%</div><div class="lbl">Taux de succès</div></div>
+  </div>
+
+  <!-- Classement -->
+  <div class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="panel-title">🏆 Classement des commerciaux</div>
+        <div class="panel-sub">Performance individuelle sur la période sélectionnée</div>
+      </div>
+      <select class="select" id="dashPeriod">
+        <option value="all">Toute la période</option>
+        <option value="today">Aujourd'hui</option>
+        <option value="week">7 derniers jours</option>
+        <option value="month">30 derniers jours</option>
+      </select>
+    </div>
+    <div style="padding:18px 20px">
+      <div class="leaderboard" id="leaderboard"></div>
+    </div>
+  </div>
+
+  <!-- Détail par commercial -->
+  <div class="panel" style="margin-top:20px">
+    <div class="panel-head">
+      <div>
+        <div class="panel-title">📋 Activité détaillée</div>
+        <div class="panel-sub">Toutes les actions menées par les commerciaux</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <select class="select" id="dashFilterAgent">
+          <option value="all">Tous les commerciaux</option>
+        </select>
+        <button class="btn btn-ghost btn-sm" id="dashExport">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Exporter
+        </button>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Commercial</th>
+            <th>Utilisateur</th>
+            <th>Type</th>
+            <th>Canal</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody id="dashTable"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ -->
+<!-- MODAL ADMIN (paramètres) -->
+<!-- ============================ -->
+<div class="modal-bg" id="adminModal">
+  <div class="modal" style="max-width:720px">
+    <div class="modal-head">
+      <div class="modal-title">⚙️ Paramètres administrateur</div>
+      <button class="modal-close" id="adminClose">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="admin-grid">
+        <div class="admin-section">
+          <h3>👥 Comptes commerciaux</h3>
+          <div class="agent-list" id="agentList"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:6px;margin-top:14px">
+            <input type="text" id="newAgentUser" placeholder="Identifiant" class="input" style="min-width:0"/>
+            <input type="text" id="newAgentName" placeholder="Nom complet" class="input" style="min-width:0"/>
+            <input type="text" id="newAgentPwd" placeholder="Mot de passe" class="input" style="min-width:0"/>
+            <button class="btn btn-primary btn-sm" id="addAgentBtn">+ Ajouter</button>
+          </div>
+        </div>
+        <div class="admin-section">
+          <h3>💰 Codes promos</h3>
+          <p style="font-size:12px;color:var(--ink-2);margin-bottom:14px">Modifiez les montants et codes des campagnes automatiques. La devise s'applique partout.</p>
+
+          <div class="field">
+            <label>Devise affichée partout</label>
+            <select id="settingCurrency" class="select" style="width:100%">
+              <option value="FCFA">FCFA (Franc CFA)</option>
+              <option value="€">€ (Euro)</option>
+              <option value="$">$ (Dollar)</option>
+              <option value="MAD">MAD (Dirham)</option>
+            </select>
+          </div>
+
+          <div style="background:var(--bg);padding:14px;border-radius:8px;margin-bottom:14px">
+            <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:8px">🎁 Promo Fidélisation (clients &lt; 5 trajets)</div>
+            <div class="field" style="margin-bottom:8px"><label>Code promo</label><input type="text" id="setLowCode" class="input" style="width:100%" value="FIDELITE-20"/></div>
+            <div class="currency-input" style="margin-bottom:8px">
+              <div class="field" style="margin:0"><label>Type</label><select id="setLowType" class="select" style="width:100%"><option value="amount">Crédit fixe</option><option value="percent">Pourcentage</option></select></div>
+              <div class="field" style="margin:0"><label>Valeur</label><input type="number" id="setLowValue" class="input" style="width:100%" value="2000"/></div>
+            </div>
+            <div class="field" style="margin:0"><label>Validité (jours)</label><input type="number" id="setLowValidity" class="input" style="width:100%" value="14"/></div>
+          </div>
+
+          <div style="background:var(--bg);padding:14px;border-radius:8px">
+            <div style="font-size:12px;font-weight:700;color:var(--info);margin-bottom:8px">🚗 Bonus Conducteurs inactifs</div>
+            <div class="field" style="margin-bottom:8px"><label>Code promo</label><input type="text" id="setDriverCode" class="input" style="width:100%" value="COMEBACK-25"/></div>
+            <div class="currency-input" style="margin-bottom:8px">
+              <div class="field" style="margin:0"><label>Type</label><select id="setDriverType" class="select" style="width:100%"><option value="percent">Pourcentage</option><option value="amount">Crédit fixe</option></select></div>
+              <div class="field" style="margin:0"><label>Valeur</label><input type="number" id="setDriverValue" class="input" style="width:100%" value="25"/></div>
+            </div>
+            <div class="field" style="margin:0"><label>Validité (jours)</label><input type="number" id="setDriverValidity" class="input" style="width:100%" value="7"/></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="adminCancel">Fermer</button>
+      <button class="btn btn-primary" id="adminSave">💾 Enregistrer les modifications</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ -->
+<!-- MODAL CHOIX EMAIL CLIENT -->
+<!-- ============================ -->
+<div class="modal-bg" id="emailChooserModal">
+  <div class="modal" style="max-width:480px">
+    <div class="modal-head">
+      <div class="modal-title">📧 Choisir l'application email</div>
+      <button class="modal-close" id="emailChooserClose">×</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:13px;color:var(--ink-2);margin-bottom:14px">Sélectionnez l'application avec laquelle envoyer le message à <strong id="emailChooserRecipient">—</strong>.</p>
+      <div class="email-options" id="emailOptions"></div>
+      <p style="font-size:11px;color:var(--ink-3);margin-top:14px;text-align:center">💡 Une fois ouvert, le message est <strong>déjà pré-rempli</strong>. Cliquez juste sur "Envoyer".</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ -->
 <!-- MODAL COLUMN MAPPING -->
 <!-- ============================ -->
 <div class="modal-bg" id="mappingModal">
@@ -806,15 +1154,9 @@
       <div id="promoSettings" style="display:none">
         <div class="field">
           <label>Type de promo</label>
-          <div class="promo-presets">
-            <button class="preset-chip" data-promo="-10€">Crédit -10€</button>
-            <button class="preset-chip active" data-promo="-15€">Crédit -15€</button>
-            <button class="preset-chip" data-promo="-20€">Crédit -20€</button>
-            <button class="preset-chip" data-promo="-30%">-30% prochaine course</button>
-            <button class="preset-chip" data-promo="-50% x2">-50% × 2 courses</button>
-          </div>
+          <div class="promo-presets" id="promoPresets"></div>
         </div>
-        <div class="field"><label>Code promo</label><input type="text" id="promoCode" value="CREDIT-15"/></div>
+        <div class="field"><label>Code promo</label><input type="text" id="promoCode" value="CREDIT"/></div>
         <div class="field"><label>Validité</label><select id="promoValidity"><option value="7">7 jours</option><option value="14" selected>14 jours</option><option value="30">30 jours</option></select></div>
       </div>
       <div class="field" id="subjectField" style="display:none"><label>Objet</label><input type="text" id="subjectInput" placeholder="Objet du message"/></div>
@@ -871,6 +1213,8 @@
   <div class="drawer-foot" id="drawerFoot"></div>
 </aside>
 
+</div><!-- /#app -->
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -884,6 +1228,184 @@ let currentTab = 'import';
 let modalCtx = { recipients:[], type:null, channel:'sms', promo:'-15€' };
 let pendingFile = { name:null, rows:null, headers:null, mapping:{} };
 const today = new Date();
+
+// ====== AUTH & SESSION ======
+const STORAGE_KEY = 'kombicar_data_v1';
+const BDD_KEY = 'kombicar_bdd_v1'; // BDD utilisateurs séparée (peut être volumineuse)
+let session = null;
+let agents = [];
+let appSettings = null;
+let bddMeta = null; // { filename, importedAt, importedBy, count }
+
+function defaultSettings(){
+  return {
+    currency:'FCFA',
+    promoLow:{code:'FIDELITE-20', type:'amount', value:2000, validity:14},
+    promoDriver:{code:'COMEBACK-25', type:'percent', value:25, validity:7}
+  };
+}
+function defaultAgents(){
+  return [
+    {id:'admin', name:'Administrateur', password:'admin', role:'admin', city:'—', createdAt:new Date().toISOString()}
+  ];
+}
+
+function loadStorage(){
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw){
+      const data = JSON.parse(raw);
+      agents = data.agents || defaultAgents();
+      appSettings = data.settings || defaultSettings();
+      // Charger aussi les actions persistées (pour le dashboard équipe)
+      if(data.actions) actions = data.actions;
+      // Charger les métadonnées BDD
+      if(data.bddMeta) bddMeta = data.bddMeta;
+    } else {
+      agents = defaultAgents();
+      appSettings = defaultSettings();
+      saveStorage();
+    }
+  } catch(e){
+    console.error('Storage error:', e);
+    agents = defaultAgents();
+    appSettings = defaultSettings();
+  }
+
+  // Charger la BDD utilisateurs (stockée à part car volumineuse)
+  loadBdd();
+}
+
+function loadBdd(){
+  try {
+    const raw = localStorage.getItem(BDD_KEY);
+    if(raw){
+      const parsed = JSON.parse(raw);
+      if(Array.isArray(parsed) && parsed.length > 0){
+        users = parsed;
+        return true;
+      }
+    }
+  } catch(e){ console.error('BDD load error:', e); }
+  return false;
+}
+
+function saveBdd(){
+  try {
+    localStorage.setItem(BDD_KEY, JSON.stringify(users));
+    return true;
+  } catch(e){
+    // Quota dépassé probablement
+    console.error('BDD save error:', e);
+    showToast('⚠️ BDD trop volumineuse pour être sauvegardée localement','error');
+    return false;
+  }
+}
+
+function clearBdd(){
+  users = [];
+  bddMeta = null;
+  selectedIds.clear();
+  try {
+    localStorage.removeItem(BDD_KEY);
+  } catch(e){}
+  saveStorage();
+}
+
+function saveStorage(){
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      agents, settings:appSettings, actions, bddMeta
+    }));
+  } catch(e){ console.error('Save error:', e); }
+}
+
+function loadSession(){
+  try {
+    const raw = sessionStorage.getItem('kombicar_session');
+    if(raw) session = JSON.parse(raw);
+  } catch(e){}
+}
+function saveSession(){
+  if(session){
+    try { sessionStorage.setItem('kombicar_session', JSON.stringify(session)); } catch(e){}
+  } else {
+    sessionStorage.removeItem('kombicar_session');
+  }
+}
+
+function tryLogin(username, password){
+  const agent = agents.find(a => a.id.toLowerCase() === username.toLowerCase().trim() && a.password === password);
+  if(!agent){ return false; }
+  session = { agentId: agent.id, loginAt: new Date().toISOString() };
+  saveSession();
+  return true;
+}
+
+function logout(){
+  session = null;
+  saveSession();
+  location.reload();
+}
+
+function getCurrentAgent(){
+  if(!session) return null;
+  return agents.find(a => a.id === session.agentId) || null;
+}
+
+// ====== INIT ======
+loadStorage();
+loadSession();
+
+if(session && getCurrentAgent()){
+  showApp();
+} else {
+  showLogin();
+}
+
+function showLogin(){
+  $('#loginScreen').style.display = 'flex';
+  $('#app').style.display = 'none';
+}
+function showApp(){
+  $('#loginScreen').style.display = 'none';
+  $('#app').style.display = 'block';
+  const agent = getCurrentAgent();
+  // Mise à jour du badge
+  $('#topAgentName').textContent = agent.name;
+  $('#topAgentRole').textContent = agent.role === 'admin' ? 'Administrateur' : `Commercial · ${agent.city || ''}`;
+  $('#topAgentPic').textContent = (agent.name.split(' ').map(w=>w[0]).join('').substring(0,2)).toUpperCase();
+  // Affichage des éléments réservés admin
+  if(agent.role === 'admin'){
+    document.body.classList.add('is-admin');
+    $('#btnAdminPanel').style.display = 'inline-flex';
+    document.querySelectorAll('.tab.role-only').forEach(t=>t.style.display='inline-flex');
+  }
+}
+
+// LOGIN handlers
+$('#loginBtn').addEventListener('click', doLogin);
+$('#loginPassword').addEventListener('keypress', e => { if(e.key==='Enter') doLogin(); });
+$('#loginUsername').addEventListener('keypress', e => { if(e.key==='Enter') $('#loginPassword').focus(); });
+function doLogin(){
+  const u = $('#loginUsername').value.trim();
+  const p = $('#loginPassword').value;
+  if(!u || !p){
+    $('#loginError').textContent = 'Saisissez votre identifiant et mot de passe';
+    $('#loginError').style.display = 'block';
+    return;
+  }
+  if(tryLogin(u, p)){
+    showApp();
+  } else {
+    $('#loginError').textContent = '❌ Identifiant ou mot de passe incorrect';
+    $('#loginError').style.display = 'block';
+  }
+}
+
+$('#logoutBtn').addEventListener('click', () => {
+  if(confirm('Voulez-vous vraiment vous déconnecter ?')) logout();
+});
 
 // ====== COLUMN DETECTION ======
 const FIELD_PATTERNS = {
@@ -1093,18 +1615,54 @@ function runAnalysis(){
   $('#filterCity').innerHTML = '<option value="all">Toutes</option>' + cities.map(c=>`<option value="${c}">${c}</option>`).join('');
 
   // Update analysis banner
-  $('#abFilename').textContent = pendingFile.name;
-  $('#abTotal').textContent = users.length;
-  $('#abPassengers').textContent = users.filter(u=>u.type==='passenger').length;
-  $('#abDrivers').textContent = users.filter(u=>u.type==='driver').length;
-  $('#abToContact').textContent = users.filter(u=>['inactive','dormant','new','low_activity'].includes(getStatus(u))).length;
+  refreshAnalysisBanner();
 
   // Mettre à jour les compteurs de campagnes
   updateCampaignCounts();
 
+  // ✨ Sauvegarder la BDD pour qu'elle persiste entre sessions
+  const currentAgent = getCurrentAgent();
+  bddMeta = {
+    filename: pendingFile.name,
+    importedAt: new Date().toISOString(),
+    importedBy: currentAgent ? currentAgent.name : '—',
+    importedById: currentAgent ? currentAgent.id : null,
+    count: users.length
+  };
+  const saved = saveBdd();
+  saveStorage();
+
   switchTab('users');
-  showToast(`✓ ${users.length} utilisateurs analysés depuis ${pendingFile.name}`);
+  if(saved){
+    showToast(`✓ ${users.length} utilisateurs analysés et sauvegardés`);
+  } else {
+    showToast(`✓ ${users.length} utilisateurs analysés (sauvegarde locale impossible)`,'error');
+  }
   $('#mappingModal').classList.remove('show');
+  refreshImportBanner();
+}
+
+// Met à jour la bannière d'analyse en haut de la page utilisateurs
+function refreshAnalysisBanner(){
+  if(!users.length) return;
+  $('#abFilename').textContent = bddMeta ? `${bddMeta.filename} · importé le ${formatDateTime(bddMeta.importedAt)} par ${bddMeta.importedBy}` : '—';
+  $('#abTotal').textContent = users.length;
+  $('#abPassengers').textContent = users.filter(u=>u.type==='passenger').length;
+  $('#abDrivers').textContent = users.filter(u=>u.type==='driver').length;
+  $('#abToContact').textContent = users.filter(u=>['inactive','dormant','new','low_activity'].includes(getStatus(u))).length;
+}
+
+// Affiche/masque la bannière "BDD chargée" sur la page d'import
+function refreshImportBanner(){
+  const banner = $('#bddLoadedBanner');
+  if(!banner) return;
+  if(users.length > 0 && bddMeta){
+    banner.style.display = 'block';
+    const date = formatDateTime(bddMeta.importedAt);
+    $('#bddMetaText').textContent = `${bddMeta.count} utilisateurs · ${bddMeta.filename} · importé le ${date} par ${bddMeta.importedBy}`;
+  } else {
+    banner.style.display = 'none';
+  }
 }
 
 // ====== CAMPAGNES AUTOMATIQUES ======
@@ -1127,52 +1685,62 @@ function updateCampaignCounts(){
   if(elDriv) elDriv.textContent = getCampaignTargets('dormant_drivers').length;
 }
 
-const CAMPAIGN_TEMPLATES = {
-  low_activity: {
-    title:'Fidéliser les clients peu actifs',
-    type:'promo',
-    subject:'🎁 Une offre spéciale rien que pour vous !',
-    promo:'-20%',
-    promoCode:'FIDELITE-20',
-    validity:'14',
-    message:`Bonjour {prenom},
+function getCampaignTemplate(campaignType){
+  const cur = appSettings.currency;
+  if(campaignType === 'low_activity'){
+    const p = appSettings.promoLow;
+    const promoLabel = p.type === 'percent' ? `-${p.value}%` : `${p.value} ${cur}`;
+    return {
+      title:'Fidéliser les clients peu actifs',
+      type:'promo',
+      subject:'🎁 Une offre spéciale Kombicar pour vous !',
+      promo: promoLabel,
+      promoCode: p.code,
+      validity: String(p.validity),
+      message:`Bonjour {prenom},
 
-Nous remarquons que vous avez utilisé notre service récemment et nous voulions vous remercier pour votre confiance !
+Nous remarquons que vous avez utilisé Kombicar récemment et nous voulions vous remercier pour votre confiance !
 
 Pour vous encourager à voyager plus souvent avec nous, nous vous offrons un avantage exclusif :
 
-🎁 -20% sur votre prochaine course
+🎁 ${promoLabel} sur votre prochaine course
 Code promo : {code_promo}
-Valable {validite}
+Valable ${p.validity} jours
 
 Réservez votre prochain trajet en toute sérénité — nous nous occupons du reste.
 
 À très bientôt,
-L'équipe VTC`
-  },
-  dormant_drivers: {
-    title:'Réactiver les conducteurs inactifs',
-    type:'promo',
-    subject:'🚗 On vous attend ! Bonus de retour activé',
-    promo:'Bonus +25%',
-    promoCode:'COMEBACK-25',
-    validity:'7',
-    message:`Bonjour {prenom},
+L'équipe Kombicar`
+    };
+  }
+  if(campaignType === 'dormant_drivers'){
+    const p = appSettings.promoDriver;
+    const promoLabel = p.type === 'percent' ? `+${p.value}%` : `${p.value} ${cur}`;
+    return {
+      title:'Réactiver les conducteurs inactifs',
+      type:'promo',
+      subject:'🚗 On vous attend ! Bonus de retour activé',
+      promo: 'Bonus '+promoLabel,
+      promoCode: p.code,
+      validity: String(p.validity),
+      message:`Bonjour {prenom},
 
-Cela fait quelques jours que nous ne vous avons pas vu en ligne et nous voulions prendre de vos nouvelles.
+Cela fait quelques jours que nous ne vous avons pas vu en ligne sur Kombicar et nous voulions prendre de vos nouvelles.
 
 Pour faciliter votre retour, nous activons un bonus exclusif :
 
-🚗 +25% sur chaque course pendant 7 jours
+🚗 ${promoLabel} sur chaque course pendant ${p.validity} jours
 Code à activer : {code_promo}
-Valable {validite}
+Valable ${p.validity} jours
 
 La demande est forte cette semaine — c'est le moment idéal pour reprendre du service et booster vos revenus.
 
 À très vite sur la route,
-L'équipe VTC`
+L'équipe Kombicar`
+    };
   }
-};
+  return null;
+}
 
 function openCampaign(campaignType){
   const targets = getCampaignTargets(campaignType);
@@ -1180,7 +1748,8 @@ function openCampaign(campaignType){
     showToast(`Aucun utilisateur ciblé pour cette campagne`,'error');
     return;
   }
-  const template = CAMPAIGN_TEMPLATES[campaignType];
+  const template = getCampaignTemplate(campaignType);
+  if(!template) return;
 
   // Ouvrir le modal d'action avec les paramètres pré-remplis
   modalCtx.type = template.type;
@@ -1202,7 +1771,7 @@ function openCampaign(campaignType){
 
   // Afficher les paramètres promo
   $('#promoSettings').style.display = 'block';
-  $$('.preset-chip').forEach(c => c.classList.remove('active'));
+  renderPromoPresets(null);
   $('#promoCode').value = template.promoCode;
   $('#promoValidity').value = template.validity;
 
@@ -1377,8 +1946,14 @@ function openModal(actionType, ids){
   $('#subjectInput').value = actionType === 'promo' ? 'Une offre exclusive vous attend 🎁' : actionType === 'relance' ? 'On pense à vous' : 'Information importante';
   $$('.channel-opt').forEach(c=>c.classList.toggle('active', c.dataset.channel === modalCtx.channel));
   updateSubjectField();
-  $$('.preset-chip').forEach(c=>c.classList.toggle('active', c.dataset.promo === '-15€'));
-  $('#promoCode').value = generatePromoCode('-15€');
+  // Render dynamic promo presets selon devise
+  if(actionType === 'promo'){
+    const defaultKey = renderPromoPresets(null);
+    modalCtx.promo = defaultKey;
+    $$('#promoPresets .preset-chip').forEach((c,i)=>{ if(i===1) c.classList.add('active'); });
+    modalCtx.promo = $$('#promoPresets .preset-chip')[1].dataset.promo;
+    $('#promoCode').value = generatePromoCode(modalCtx.promo);
+  }
   $('#actionModal').classList.add('show');
 }
 function closeModal(){$('#actionModal').classList.remove('show');}
@@ -1393,16 +1968,37 @@ $$('.channel-opt').forEach(c=>c.addEventListener('click',()=>{
   updateSubjectField();
 }));
 function updateSubjectField(){$('#subjectField').style.display = modalCtx.channel === 'email' ? 'block' : 'none';}
+function renderPromoPresets(activePromo){
+  const cur = appSettings.currency;
+  const presets = [
+    {key:`-1000 ${cur}`, label:`-1000 ${cur}`},
+    {key:`-2000 ${cur}`, label:`-2000 ${cur}`},
+    {key:`-5000 ${cur}`, label:`-5000 ${cur}`},
+    {key:`-30%`, label:`-30% prochaine course`},
+    {key:`-50% x2`, label:`-50% × 2 courses`}
+  ];
+  // Si euro, on peut garder les anciennes valeurs euro plus pertinentes
+  if(cur === '€'){
+    presets[0] = {key:'-10€', label:'Crédit -10€'};
+    presets[1] = {key:'-15€', label:'Crédit -15€'};
+    presets[2] = {key:'-20€', label:'Crédit -20€'};
+  }
+  $('#promoPresets').innerHTML = presets.map(p =>
+    `<button class="preset-chip ${activePromo === p.key ? 'active' : ''}" data-promo="${p.key}">${p.label}</button>`
+  ).join('');
+  // Bind handlers
+  $$('#promoPresets .preset-chip').forEach(c=>c.addEventListener('click',()=>{
+    $$('#promoPresets .preset-chip').forEach(x=>x.classList.remove('active'));
+    c.classList.add('active');
+    modalCtx.promo = c.dataset.promo;
+    $('#promoCode').value = generatePromoCode(c.dataset.promo);
+  }));
+  return presets[1].key; // valeur par défaut
+}
 
-$$('.preset-chip').forEach(c=>c.addEventListener('click',()=>{
-  $$('.preset-chip').forEach(x=>x.classList.remove('active'));
-  c.classList.add('active');
-  modalCtx.promo = c.dataset.promo;
-  $('#promoCode').value = generatePromoCode(c.dataset.promo);
-}));
 function generatePromoCode(promo){
-  const map = {'-10€':'CREDIT-10','-15€':'CREDIT-15','-20€':'CREDIT-20','-30%':'OFF-30','-50% x2':'DUO-50'};
-  return (map[promo] || 'PROMO') + '-' + Math.random().toString(36).substring(2,6).toUpperCase();
+  const stem = promo.replace(/[^A-Z0-9]/gi,'').toUpperCase().substring(0,8) || 'PROMO';
+  return stem + '-' + Math.random().toString(36).substring(2,6).toUpperCase();
 }
 
 $('#modalConfirm').addEventListener('click',()=>{
@@ -1418,6 +2014,7 @@ $('#modalConfirm').addEventListener('click',()=>{
     const u = users.find(x=>x.id===uid);
     const personalizedMsg = personalizeMessage(message, u, promoData);
     const personalizedSubject = subject ? personalizeMessage(subject, u, promoData) : null;
+    const currentAgent = getCurrentAgent();
     const action = {
       id:'A-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).substring(2,5).toUpperCase(),
       createdAt: now, userId: uid,
@@ -1425,11 +2022,13 @@ $('#modalConfirm').addEventListener('click',()=>{
       type: modalCtx.type, channel: modalCtx.channel,
       subject: personalizedSubject, message: personalizedMsg, promo: promoData,
       status:'pending', validatedAt:null, result:null,
-      agent:'Sarah Moreau'
+      agent: currentAgent ? currentAgent.name : 'Inconnu',
+      agentId: currentAgent ? currentAgent.id : null
     };
     actions.unshift(action);
     createdActions.push({action, user:u});
   });
+  saveStorage();
 
   closeModal();
   selectedIds.clear();
@@ -1480,9 +2079,9 @@ function openSendDispatcher(createdActions, channel){
     : `Tous les destinataires ont leur ${channel === 'email' ? 'email' : 'numéro WhatsApp'} renseigné.`;
 
   $('#dispatcherList').innerHTML = eligible.map(({action, user}) => {
-    const link = generateSendLink(action, user, channel);
     const contact = channel === 'email' ? user.email : formatPhoneForWhatsapp(user.phone);
-    return `
+    if(channel === 'email'){
+      return `
       <div class="dispatch-row" data-aid="${action.id}">
         <div class="dispatch-info">
           <div class="user-cell">
@@ -1493,23 +2092,51 @@ function openSendDispatcher(createdActions, channel){
             </div>
           </div>
         </div>
-        <a href="${link}" target="_blank" class="btn btn-${channel === 'email' ? 'primary' : 'whatsapp'} btn-sm dispatch-send" data-aid="${action.id}">
-          ${channel === 'email' ? '📧 Ouvrir email' : '💬 Ouvrir WhatsApp'}
+        <button class="btn btn-primary btn-sm" data-email-aid="${action.id}" data-email-uid="${user.id}">
+          📧 Choisir &amp; envoyer
+        </button>
+      </div>`;
+    } else {
+      const link = generateSendLink(action, user, channel);
+      return `
+      <div class="dispatch-row" data-aid="${action.id}">
+        <div class="dispatch-info">
+          <div class="user-cell">
+            <div class="user-avatar ${user.type}" style="width:32px;height:32px;font-size:12px">${initials(user)}</div>
+            <div class="user-info">
+              <strong>${user.firstName} ${user.lastName}</strong>
+              <small>${contact}</small>
+            </div>
+          </div>
+        </div>
+        <a href="${link}" target="_blank" class="btn btn-whatsapp btn-sm dispatch-send" data-aid="${action.id}">
+          💬 Ouvrir WhatsApp
         </a>
       </div>`;
+    }
   }).join('');
 
-  // Bouton "tout envoyer" si plus d'un destinataire
-  if(eligible.length > 1){
+  // Email chooser - bind handlers
+  if(channel === 'email'){
+    $$('[data-email-aid]').forEach(btn => btn.addEventListener('click', () => {
+      const a = actions.find(x => x.id === btn.dataset.emailAid);
+      const u = users.find(x => x.id === btn.dataset.emailUid);
+      if(a && u) openEmailChooser(a, u);
+    }));
+  }
+
+  // Bouton "tout envoyer" — désactivé pour email (chaque destinataire doit choisir son client)
+  if(channel === 'whatsapp' && eligible.length > 1){
     $('#dispatcherSendAll').style.display = 'inline-flex';
+    $('#dispatcherSendAll').textContent = '⚡ Tout ouvrir';
     $('#dispatcherSendAll').onclick = () => {
       eligible.forEach(({action, user}, i) => {
         setTimeout(() => {
           const link = generateSendLink(action, user, channel);
           window.open(link, '_blank');
-        }, i * 400); // délai pour éviter le blocage de popups
+        }, i * 400);
       });
-      showToast(`✓ ${eligible.length} fenêtres d'envoi ouvertes — vérifiez les onglets`);
+      showToast(`✓ ${eligible.length} fenêtres WhatsApp ouvertes`);
     };
   } else {
     $('#dispatcherSendAll').style.display = 'none';
@@ -1526,10 +2153,23 @@ function formatPhoneForWhatsapp(phone){
   return p;
 }
 
-function generateSendLink(action, user, channel){
+function generateSendLink(action, user, channel, emailClient){
   if(channel === 'email'){
     const subject = encodeURIComponent(action.subject || 'Information');
     const body = encodeURIComponent(action.message);
+    const to = encodeURIComponent(user.email);
+    if(emailClient === 'gmail'){
+      // Gmail web compose
+      return `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${body}`;
+    }
+    if(emailClient === 'outlook'){
+      // Outlook web compose
+      return `https://outlook.live.com/mail/0/deeplink/compose?to=${to}&subject=${subject}&body=${body}`;
+    }
+    if(emailClient === 'yahoo'){
+      return `https://compose.mail.yahoo.com/?to=${to}&subject=${subject}&body=${body}`;
+    }
+    // Default = client mail natif (Outlook desktop, Mail.app, Thunderbird, etc.)
     return `mailto:${user.email}?subject=${subject}&body=${body}`;
   }
   if(channel === 'whatsapp'){
@@ -1539,6 +2179,32 @@ function generateSendLink(action, user, channel){
   }
   return '#';
 }
+
+// Ouvre le sélecteur de client email pour un destinataire
+function openEmailChooser(action, user){
+  $('#emailChooserRecipient').textContent = `${user.firstName} ${user.lastName} (${user.email})`;
+  const opts = [
+    {key:'gmail',  cls:'gmail',  icon:'G', name:'Gmail',          desc:'Ouvre Gmail dans un nouvel onglet'},
+    {key:'outlook',cls:'outlook',icon:'O', name:'Outlook Web',     desc:'Ouvre Outlook.com dans un nouvel onglet'},
+    {key:'yahoo',  cls:'default',icon:'Y', name:'Yahoo Mail',      desc:'Ouvre Yahoo Mail dans un nouvel onglet'},
+    {key:'default',cls:'default',icon:'📧', name:'Application par défaut', desc:'Outlook desktop, Apple Mail, Thunderbird…'}
+  ];
+  $('#emailOptions').innerHTML = opts.map(o => {
+    const link = generateSendLink(action, user, 'email', o.key);
+    return `<a class="email-opt" href="${link}" target="_blank" rel="noopener">
+      <div class="email-opt-icon ${o.cls}">${o.icon}</div>
+      <div class="email-opt-content"><strong>${o.name}</strong><small>${o.desc}</small></div>
+      <div class="email-opt-arrow">→</div>
+    </a>`;
+  }).join('');
+  // Au clic, fermer la modale
+  $$('#emailOptions .email-opt').forEach(a=>a.addEventListener('click',()=>{
+    setTimeout(()=>$('#emailChooserModal').classList.remove('show'), 200);
+  }));
+  $('#emailChooserModal').classList.add('show');
+}
+$('#emailChooserClose').addEventListener('click',()=>$('#emailChooserModal').classList.remove('show'));
+$('#emailChooserModal').addEventListener('click',e=>{if(e.target.id==='emailChooserModal')$('#emailChooserModal').classList.remove('show');});
 
 // ====== ACTIONS / FOLLOWUP ======
 const ACTION_LABEL = {relance:'Relance',notif:'Notification',promo:'Promo'};
@@ -1610,10 +2276,14 @@ function resendAction(actId){
   const a = actions.find(x => x.id === actId);
   if(!a) return;
   const u = users.find(x => x.id === a.userId);
-  if(!u){showToast('Utilisateur introuvable','error');return;}
-  const link = generateSendLink(a, u, a.channel);
-  window.open(link, '_blank');
-  showToast(`Fenêtre ${a.channel === 'email' ? 'email' : 'WhatsApp'} ouverte`);
+  if(!u){showToast('Utilisateur introuvable — la BDD a peut-être été ré-importée','error');return;}
+  if(a.channel === 'email'){
+    openEmailChooser(a, u);
+  } else {
+    const link = generateSendLink(a, u, a.channel);
+    window.open(link, '_blank');
+    showToast(`Fenêtre WhatsApp ouverte`);
+  }
 }
 
 function openValidateDrawer(actId){
@@ -1629,8 +2299,8 @@ function openValidateDrawer(actId){
     <button class="btn btn-danger" id="dFail">✗ Sans réponse</button>
     <button class="btn btn-primary" id="dValidate">✓ Validée — succès</button>`;
   $('#dCancel').addEventListener('click', closeDrawer);
-  $('#dFail').addEventListener('click',()=>{a.status='failed';a.validatedAt=new Date().toISOString();a.result=$('#resultNote').value.trim()||null;closeDrawer();showToast('Action marquée comme sans réponse','error');renderActions();});
-  $('#dValidate').addEventListener('click',()=>{a.status='validated';a.validatedAt=new Date().toISOString();a.result=$('#resultNote').value.trim()||null;closeDrawer();showToast('✓ Action validée');renderActions();});
+  $('#dFail').addEventListener('click',()=>{a.status='failed';a.validatedAt=new Date().toISOString();a.result=$('#resultNote').value.trim()||null;saveStorage();closeDrawer();showToast('Action marquée comme sans réponse','error');renderActions();});
+  $('#dValidate').addEventListener('click',()=>{a.status='validated';a.validatedAt=new Date().toISOString();a.result=$('#resultNote').value.trim()||null;saveStorage();closeDrawer();showToast('✓ Action validée');renderActions();});
   showDrawer();
 }
 function openDetailDrawer(actId){
@@ -1660,7 +2330,7 @@ function showDrawer(){$('#drawer').classList.add('show');$('#drawerBg').classLis
 function closeDrawer(){$('#drawer').classList.remove('show');$('#drawerBg').classList.remove('show');}
 $('#drawerClose').addEventListener('click', closeDrawer);
 $('#drawerBg').addEventListener('click', closeDrawer);
-function cancelAction(actId){const a=actions.find(x=>x.id===actId);if(!a)return;a.status='cancelled';a.validatedAt=new Date().toISOString();showToast('Action annulée');renderActions();}
+function cancelAction(actId){const a=actions.find(x=>x.id===actId);if(!a)return;a.status='cancelled';a.validatedAt=new Date().toISOString();saveStorage();showToast('Action annulée');renderActions();}
 
 // ====== TABS ======
 function switchTab(name){
@@ -1669,6 +2339,10 @@ function switchTab(name){
     showToast('Importez d\'abord un fichier Excel','error');
     return;
   }
+  if(name === 'dashboard'){
+    const a = getCurrentAgent();
+    if(!a || a.role !== 'admin'){ showToast('Réservé aux administrateurs','error'); return; }
+  }
   currentTab = name;
   $$('.tab').forEach(t=>{
     t.classList.toggle('active', t.dataset.tab === name);
@@ -1676,9 +2350,10 @@ function switchTab(name){
   $('#viewImport').style.display = name === 'import' ? 'block' : 'none';
   $('#viewUsers').style.display = name === 'users' ? 'block' : 'none';
   $('#viewFollowup').style.display = name === 'followup' ? 'block' : 'none';
+  $('#viewDashboard').style.display = name === 'dashboard' ? 'block' : 'none';
   if(name === 'followup') renderActions();
   if(name === 'users') renderUsers();
-  // Mettre à jour la disponibilité visuelle de l'onglet users
+  if(name === 'dashboard') renderDashboard();
   refreshTabAvailability();
 }
 function refreshTabAvailability(){
@@ -1837,8 +2512,249 @@ $('#exportActions').addEventListener('click',()=>{
   showToast('✓ Suivi exporté');
 });
 
+// ====== ADMIN PANEL ======
+$('#btnAdminPanel').addEventListener('click', openAdminPanel);
+$('#adminClose').addEventListener('click',()=>$('#adminModal').classList.remove('show'));
+$('#adminCancel').addEventListener('click',()=>$('#adminModal').classList.remove('show'));
+$('#adminModal').addEventListener('click',e=>{if(e.target.id==='adminModal')$('#adminModal').classList.remove('show');});
+
+function openAdminPanel(){
+  renderAgentList();
+  // Charger les valeurs actuelles
+  $('#settingCurrency').value = appSettings.currency;
+  $('#setLowCode').value = appSettings.promoLow.code;
+  $('#setLowType').value = appSettings.promoLow.type;
+  $('#setLowValue').value = appSettings.promoLow.value;
+  $('#setLowValidity').value = appSettings.promoLow.validity;
+  $('#setDriverCode').value = appSettings.promoDriver.code;
+  $('#setDriverType').value = appSettings.promoDriver.type;
+  $('#setDriverValue').value = appSettings.promoDriver.value;
+  $('#setDriverValidity').value = appSettings.promoDriver.validity;
+  $('#adminModal').classList.add('show');
+}
+
+function renderAgentList(){
+  $('#agentList').innerHTML = agents.map(a => {
+    const isCurrent = session && session.agentId === a.id;
+    const initialsAg = (a.name.split(' ').map(w=>w[0]).join('').substring(0,2)).toUpperCase();
+    return `
+    <div class="agent-row">
+      <div class="agent-pic">${initialsAg}</div>
+      <div class="agent-info">
+        <strong>${a.name} ${isCurrent?'<small style="color:var(--success);font-weight:700">(vous)</small>':''}</strong>
+        <small>@${a.id}</small>
+      </div>
+      <span class="role-badge role-${a.role}">${a.role === 'admin' ? 'Admin' : 'Commercial'}</span>
+      ${a.role !== 'admin' ? `<button class="icon-btn" data-del-agent="${a.id}" title="Supprimer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>` : ''}
+    </div>`;
+  }).join('');
+  $$('[data-del-agent]').forEach(b=>b.addEventListener('click',()=>{
+    if(confirm('Supprimer ce commercial ? Ses actions historiques resteront dans le suivi.')){
+      agents = agents.filter(x => x.id !== b.dataset.delAgent);
+      saveStorage();
+      renderAgentList();
+      showToast('Commercial supprimé');
+    }
+  }));
+}
+
+$('#addAgentBtn').addEventListener('click', () => {
+  const id = $('#newAgentUser').value.trim().toLowerCase();
+  const name = $('#newAgentName').value.trim();
+  const pwd = $('#newAgentPwd').value;
+  if(!id || !name || !pwd){
+    showToast('Remplissez tous les champs', 'error');
+    return;
+  }
+  if(agents.find(a => a.id === id)){
+    showToast('Cet identifiant existe déjà', 'error');
+    return;
+  }
+  agents.push({
+    id, name, password:pwd, role:'commercial', city:'',
+    createdAt: new Date().toISOString()
+  });
+  saveStorage();
+  $('#newAgentUser').value=''; $('#newAgentName').value=''; $('#newAgentPwd').value='';
+  renderAgentList();
+  showToast('✓ Commercial ajouté');
+});
+
+$('#adminSave').addEventListener('click', () => {
+  appSettings.currency = $('#settingCurrency').value;
+  appSettings.promoLow = {
+    code: $('#setLowCode').value.trim() || 'FIDELITE',
+    type: $('#setLowType').value,
+    value: parseInt($('#setLowValue').value) || 0,
+    validity: parseInt($('#setLowValidity').value) || 14
+  };
+  appSettings.promoDriver = {
+    code: $('#setDriverCode').value.trim() || 'COMEBACK',
+    type: $('#setDriverType').value,
+    value: parseInt($('#setDriverValue').value) || 0,
+    validity: parseInt($('#setDriverValidity').value) || 7
+  };
+  saveStorage();
+  $('#adminModal').classList.remove('show');
+  showToast('✓ Paramètres enregistrés');
+  // Re-render au cas où on est sur l'onglet utilisateurs
+  if(users.length > 0) updateCampaignCounts();
+});
+
+// ====== DASHBOARD ÉQUIPE ======
+function getActionsForPeriod(period){
+  const now = new Date();
+  let cutoff = null;
+  if(period === 'today'){
+    cutoff = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  } else if(period === 'week'){
+    cutoff = new Date(now); cutoff.setDate(cutoff.getDate()-7);
+  } else if(period === 'month'){
+    cutoff = new Date(now); cutoff.setDate(cutoff.getDate()-30);
+  }
+  if(!cutoff) return actions;
+  return actions.filter(a => new Date(a.createdAt) >= cutoff);
+}
+
+function renderDashboard(){
+  const period = $('#dashPeriod').value;
+  const filtered = getActionsForPeriod(period);
+
+  // KPIs
+  const total = filtered.length;
+  const success = filtered.filter(a=>a.status==='validated').length;
+  const fail = filtered.filter(a=>a.status==='failed').length;
+  const pend = filtered.filter(a=>a.status==='pending').length;
+  const rate = total > 0 ? Math.round((success / Math.max(success+fail,1)) * 100) : 0;
+  $('#dashTotal').textContent = total;
+  $('#dashSuccess').textContent = success;
+  $('#dashFail').textContent = fail;
+  $('#dashPend').textContent = pend;
+  $('#dashRate').textContent = rate + '%';
+
+  // Leaderboard : grouper par agent
+  const byAgent = {};
+  filtered.forEach(a => {
+    const key = a.agentId || a.agent || 'unknown';
+    if(!byAgent[key]) byAgent[key] = {
+      agentId:a.agentId, agentName:a.agent || 'Inconnu',
+      total:0, success:0, fail:0, pending:0
+    };
+    byAgent[key].total++;
+    if(a.status==='validated') byAgent[key].success++;
+    else if(a.status==='failed') byAgent[key].fail++;
+    else if(a.status==='pending') byAgent[key].pending++;
+  });
+  const leaders = Object.values(byAgent).sort((a,b) => b.success - a.success || b.total - a.total);
+
+  if(leaders.length === 0){
+    $('#leaderboard').innerHTML = `<div class="empty"><strong>Aucune action sur cette période</strong>Les commerciaux n'ont pas encore mené d'actions.</div>`;
+  } else {
+    $('#leaderboard').innerHTML = leaders.map((l, i) => {
+      const rankCls = i === 0 ? 'r1' : i === 1 ? 'r2' : i === 2 ? 'r3' : '';
+      const initialsLeader = (l.agentName.split(' ').map(w=>w[0]).join('').substring(0,2)).toUpperCase();
+      const lRate = l.success+l.fail > 0 ? Math.round(l.success / (l.success+l.fail) * 100) : 0;
+      return `
+        <div class="leader-row">
+          <div class="leader-rank ${rankCls}">${i+1}</div>
+          <div class="user-avatar" style="width:36px;height:36px">${initialsLeader}</div>
+          <div class="leader-info">
+            <strong>${l.agentName}</strong>
+            <small>${l.agentId ? '@'+l.agentId : 'Compte supprimé'}</small>
+          </div>
+          <div class="leader-stats">
+            <div class="leader-stat"><span class="num">${l.total}</span><span class="lbl">Actions</span></div>
+            <div class="leader-stat"><span class="num" style="color:var(--success)">${l.success}</span><span class="lbl">Succès</span></div>
+            <div class="leader-stat"><span class="num" style="color:var(--danger)">${l.fail}</span><span class="lbl">Échec</span></div>
+            <div class="leader-stat"><span class="num">${lRate}%</span><span class="lbl">Taux</span></div>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  // Update agent filter dropdown
+  const agentSelect = $('#dashFilterAgent');
+  const currentAgentFilter = agentSelect.value;
+  agentSelect.innerHTML = '<option value="all">Tous les commerciaux</option>' +
+    agents.filter(a => a.role !== 'admin').map(a => `<option value="${a.id}">${a.name}</option>`).join('');
+  agentSelect.value = currentAgentFilter;
+
+  // Detailed table
+  const agentFilter = agentSelect.value;
+  let detailed = filtered;
+  if(agentFilter !== 'all') detailed = detailed.filter(a => a.agentId === agentFilter);
+  const tbody = $('#dashTable');
+  if(detailed.length === 0){
+    tbody.innerHTML = `<tr><td colspan="6"><div class="empty">Aucune action</div></td></tr>`;
+  } else {
+    tbody.innerHTML = detailed.slice(0, 200).map(a => `
+      <tr>
+        <td><div style="font-size:12px;font-weight:600">${formatDateTime(a.createdAt)}</div></td>
+        <td><strong>${a.agent}</strong></td>
+        <td>${a.userName} <small style="color:var(--ink-3);font-family:var(--mono);font-size:11px">${a.userId}</small></td>
+        <td><strong>${ACTION_LABEL[a.type]}</strong></td>
+        <td><div class="channel-icon">${CHANNEL_ICON[a.channel]}${CHANNEL_LABEL[a.channel]}</div></td>
+        <td><span class="status-pill st-${a.status}">${STATUS_LABEL[a.status]}</span></td>
+      </tr>`).join('');
+  }
+}
+
+$('#dashPeriod').addEventListener('change', renderDashboard);
+$('#dashFilterAgent').addEventListener('change', renderDashboard);
+
+$('#dashExport').addEventListener('click',()=>{
+  if(actions.length === 0){showToast('Aucune action à exporter','error');return;}
+  const period = $('#dashPeriod').value;
+  const data = getActionsForPeriod(period).map(a=>({
+    'Date':formatDateTime(a.createdAt),
+    'Validation':a.validatedAt ? formatDateTime(a.validatedAt) : '',
+    'Commercial':a.agent,
+    'ID Commercial':a.agentId || '',
+    'Utilisateur':a.userName,
+    'ID Utilisateur':a.userId,
+    'Type utilisateur':a.userType === 'driver' ? 'Conducteur' : 'Passager',
+    'Type action':ACTION_LABEL[a.type],
+    'Canal':CHANNEL_LABEL[a.channel],
+    'Code promo':a.promo ? a.promo.code : '',
+    'Statut':STATUS_LABEL[a.status],
+    'Note':a.result || ''
+  }));
+  const wb = XLSX.utils.book_new();
+  const ws = XLSX.utils.json_to_sheet(data);
+  XLSX.utils.book_append_sheet(wb, ws, 'Dashboard');
+  XLSX.writeFile(wb, `dashboard-equipe-${new Date().toISOString().split('T')[0]}.xlsx`);
+  showToast('✓ Dashboard exporté');
+});
+
+// Modifier switchTab pour gérer le dashboard
+// (déjà géré dans la fonction switchTab principale)
+
 // ====== INIT ======
 refreshTabAvailability();
+
+// Si une BDD a été chargée depuis localStorage, restaurer les filtres et l'affichage
+if(users.length > 0 && bddMeta){
+  // Re-populer le filtre ville à partir de la BDD restaurée
+  const cities = [...new Set(users.map(u => u.city).filter(c => c && c !== '—'))].sort();
+  $('#filterCity').innerHTML = '<option value="all">Toutes</option>' + cities.map(c=>`<option value="${c}">${c}</option>`).join('');
+  refreshAnalysisBanner();
+  updateCampaignCounts();
+  refreshTabAvailability();
+}
+refreshImportBanner();
+
+// Handlers boutons bannière BDD
+$('#bddContinue').addEventListener('click', () => {
+  switchTab('users');
+});
+
+$('#bddClear').addEventListener('click', () => {
+  if(!confirm('Effacer la base de données chargée ? Cette action est irréversible.\n\nLes actions du suivi seront conservées.')) return;
+  clearBdd();
+  refreshImportBanner();
+  refreshTabAvailability();
+  showToast('✓ BDD effacée');
+});
 </script>
 </body>
 </html>
